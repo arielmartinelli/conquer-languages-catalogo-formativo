@@ -181,7 +181,7 @@
         <div id="price-top-row" class="items-center justify-between sm:justify-end gap-2 mb-1" style="display: none;">
           <div id="regular-price-container" style="display: none;">
             <span class="text-xs text-slate-400 line-through font-semibold uppercase tracking-wider block">
-              Arancel: <span id="regular-price">1.400 € EUR</span>
+              Arancel: <span id="regular-price">1.500 € EUR</span>
             </span>
           </div>
           <span class="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-teal-100 text-teal-800 border border-teal-300 whitespace-nowrap shadow-xs" id="badge-discount-tag" style="display: none;">
@@ -191,7 +191,7 @@
 
         <!-- Center row: Big Price & Currency -->
         <div class="flex items-baseline justify-start sm:justify-end gap-1.5 my-0.5">
-          <span class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-sans" id="final-price">1.400 €</span>
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-sans" id="final-price">1.500 €</span>
           <span class="text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider" id="currency-label">EUR</span>
         </div>
 
@@ -531,14 +531,14 @@
     latam: {
       currencySymbol: '€',
       currencyCode: 'EUR',
-      traditional: { official: 1400, beca: 560 },
-      intensive: { official: 2200, beca: 990 }
+      traditional: { official: 1500, beca: 1000 },
+      intensive: { official: 2500, beca: 2000 }
     },
     usa: {
       currencySymbol: '$',
       currencyCode: 'USD',
-      traditional: { official: 2400, beca: 960 },
-      intensive: { official: 3500, beca: 1490 }
+      traditional: { official: 3300, beca: 2800 },
+      intensive: { official: 4600, beca: 4100 }
     }
   };
 
@@ -557,7 +557,7 @@
 
   // Load from localStorage if present
   try {
-    const saved = localStorage.getItem('conquer_pricing_config_v2');
+    const saved = localStorage.getItem('conquer_pricing_config_v3');
     if (saved) {
       pricingConfig = JSON.parse(saved);
     }
@@ -809,7 +809,7 @@
                 Beca Arancelaria Aplicada con Éxito
               </p>
               <p class="text-[11px] text-emerald-800 font-medium">
-                Cupo reservado formalmente · Becas restantes: <strong>${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal}</strong>
+                Cupo reservado formalmente, beca restante: <strong>${Math.max(0, pricingConfig.becasDisponibles - 1)} de ${pricingConfig.becasTotal}</strong>
               </p>
             </div>
           </div>
@@ -865,7 +865,8 @@
     if (becaPhase === 'applied') {
       // DISCOUNT APPLIED!
       if (priceTopRow) priceTopRow.style.display = 'flex';
-      becaStateBadge.innerText = `Beca Aprobada (${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal})`;
+      const becasRestantes = Math.max(0, pricingConfig.becasDisponibles - 1);
+      becaStateBadge.innerText = `Beca Aprobada (${becasRestantes} de ${pricingConfig.becasTotal})`;
       becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-teal-50 text-teal-800 border border-teal-300 tracking-wider transition-all";
 
       regPriceContainer.style.display = 'block';
@@ -966,7 +967,7 @@
     pricingConfig.becasTotal = Number(document.getElementById('cfg-becas-total').value) || 0;
 
     try {
-      localStorage.setItem('conquer_pricing_config_v2', JSON.stringify(pricingConfig));
+      localStorage.setItem('conquer_pricing_config_v3', JSON.stringify(pricingConfig));
     } catch (e) {
       console.error(e);
     }
@@ -980,7 +981,7 @@
     if (confirm('¿Deseas restablecer las tarifas a los valores por defecto?')) {
       pricingConfig = JSON.parse(JSON.stringify(defaultPricingConfig));
       try {
-        localStorage.removeItem('conquer_pricing_config_v2');
+        localStorage.removeItem('conquer_pricing_config_v3');
       } catch (e) {}
       populateConfigInputs();
       resetBecaFlow();
