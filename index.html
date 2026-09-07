@@ -1,0 +1,992 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Conquer Languages | Programa Máster 12 Meses de Inglés</title>
+
+<!-- Google Fonts: Official Brand Typography (Poppins) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS CDN with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#00b4b6',
+              tealDark: '#0d9488',
+              tealDeep: '#0f766e',
+              dark: '#111827',
+              paper: '#f6f3ec',
+              paperLight: '#faf8f5',
+              paperCard: '#fcfbfa',
+              accentGold: '#d97706',
+              accentBlue: '#538ea6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Poppins"', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            display: ['"Poppins"', 'sans-serif'],
+            serif: ['"Poppins"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Texture & Formal Styles -->
+<style data-purpose="background-texture">
+    /* Authentic paper texture from uploaded image */
+    body {
+      background-color: #f6f3eb;
+      background-image: url('paper-texture.png');
+      background-repeat: repeat;
+      background-size: 380px auto;
+      color: #1f2937;
+    }
+  </style>
+<style data-purpose="card-emboss">
+    /* Inset soft bevel effect for module icons */
+    .module-icon-plate {
+      background: linear-gradient(145deg, #f0eee6, #ffffff);
+      box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.06), 
+        inset -2px -2px 4px rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(220, 215, 205, 0.8);
+    }
+    
+    .module-card {
+      background: #faf8f5;
+      border: 1px solid #e7e2d7;
+      box-shadow: 0 3px 10px rgba(40, 30, 20, 0.03);
+      transition: all 0.2s ease;
+    }
+    .module-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(40, 30, 20, 0.07);
+      border-color: #00b4b6;
+    }
+
+    /* Bonus Card top rounded ribbon */
+    .bonus-card-ribbon {
+      background-color: #00b4b6;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    /* Pulse animation for discounts */
+    @keyframes pulse-highlight {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .animate-price-change {
+      animation: pulse-highlight 0.4s ease-in-out;
+    }
+  </style>
+<!-- END: Custom Texture & Formal Styles -->
+</head>
+<body class="min-h-screen text-slate-800 antialiased flex flex-col justify-between font-sans">
+
+<!-- BEGIN: Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-[#111827] text-white shadow-md border-b border-gray-800" data-purpose="main-header">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<!-- Logo area -->
+<div class="flex items-center space-x-3">
+  <a href="#" class="flex items-center gap-2">
+    <img src="logo-dark-bg.png" alt="Conquer Languages" class="h-10 w-auto object-contain">
+  </a>
+</div>
+<!-- Quick Nav and Action -->
+<div class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-wider font-semibold text-gray-300">
+<a class="hover:text-teal-400 transition-colors" href="#precios">Modalidades</a>
+<a class="hover:text-teal-400 transition-colors" href="#bonus">Módulos Especializados</a>
+<a class="hover:text-teal-400 transition-colors" href="#contacto">Contacto</a>
+</div>
+<!-- Right CTA & Mundito Icon Button -->
+<div class="flex items-center space-x-3">
+  <!-- Mundito Icono: Botón para alternar región (LATAM EUR / USA USD) sin cambiar visualmente -->
+  <button onclick="toggleRegion()" class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-300 hover:text-teal-400 flex items-center justify-center transition-all shadow-sm" title="Cambiar región / divisa" aria-label="Cambiar región">
+    <svg class="w-5 h-5 text-gray-300 hover:text-teal-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+    </svg>
+  </button>
+
+  <a class="px-5 py-2 text-xs font-bold uppercase tracking-wider text-white bg-[#00b4b6] hover:bg-[#0d9488] rounded-lg transition-all shadow-md shadow-teal-900/40" href="#precios">
+    Inscribirme
+  </a>
+</div>
+</div>
+</header>
+<!-- END: Top Navigation Bar -->
+
+<main>
+<!-- BEGIN: Interactive Pricing Switch Section -->
+<section class="py-12 md:py-16 border-b border-[#e2dacf]" data-purpose="interactive-pricing" id="precios">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="text-center mb-8">
+  <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-display">
+    Planes Académicos de Aceleración
+  </h2>
+  <p class="text-slate-600 mt-2 text-sm sm:text-base max-w-xl mx-auto">
+    Selecciona entre nuestro programa estructurado a 12 meses o el itinerario intensivo de alta dedicación.
+  </p>
+
+  <!-- Modalidad Switch (Traditional vs Intensive) -->
+  <div class="mt-6 inline-flex p-1.5 bg-[#e3dacf] rounded-2xl shadow-inner border border-[#cfc4b0]" role="tablist">
+    <button class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm bg-white text-slate-900 border border-slate-200/80" id="tab-traditional" onclick="setModalidad('traditional')">
+      Modalidad Tradicional
+    </button>
+    <button class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5" id="tab-intensive" onclick="setModalidad('intensive')">
+      <svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+      </svg>
+      <span>Modalidad Intensivo VIP</span>
+    </button>
+  </div>
+</div>
+
+<!-- Single Dynamic Pricing Card with Backlight Aura for Intensivo VIP -->
+<div class="relative">
+  <!-- Backlight Aura Glow behind the card (peeks from the edges without changing the border) -->
+  <div id="card-aura-glow" class="absolute -inset-2.5 sm:-inset-4 rounded-[2.5rem] bg-gradient-to-r from-[#00b4b6] via-[#38bdf8] to-[#00b4b6] opacity-0 blur-2xl transition-all duration-500 pointer-events-none -z-10"></div>
+
+  <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-slate-300 shadow-xl relative transition-all duration-300" id="pricing-card">
+
+  <!-- Interactive Beca Flow Container (Initial -> Loading / Waiting -> Revealed -> Applied) -->
+  <div id="beca-flow-container" class="mb-6">
+    <!-- Injected dynamically by renderBecaFlow() -->
+  </div>
+
+  <!-- Top Tag / Badge Container -->
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+    <span class="px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider" id="card-badge">Enfoque Progresivo · 12 Meses</span>
+    <span class="px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider transition-all" id="beca-state-badge">Tarifa Oficial</span>
+  </div>
+
+  <!-- Title and Description with Redesigned Price Box -->
+  <div class="grid lg:grid-cols-12 gap-8 items-center pb-8 border-b border-slate-100">
+    <div class="lg:col-span-7">
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display" id="plan-title">Modalidad Tradicional</h3>
+      <p class="text-slate-600 text-sm mt-2 leading-relaxed" id="plan-desc">Itinerario formativo continuo para profesionales y estudiantes que requieren flexibilidad horaria y consolidación progresiva.</p>
+    </div>
+
+    <!-- Dynamic Price Block -->
+    <div class="lg:col-span-5">
+      <div class="bg-gradient-to-br from-[#faf8f5] to-[#f4eee2] p-5 sm:p-6 rounded-2xl border border-[#e5dfd3] shadow-sm flex flex-col justify-between" id="price-box">
+        <!-- Top row: Status Badge & Strikethrough -->
+        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 mb-2">
+          <div id="regular-price-container" style="display: none;">
+            <span class="text-xs text-slate-400 line-through font-semibold uppercase tracking-wider block">
+              Arancel: <span id="regular-price">1.400 € EUR</span>
+            </span>
+          </div>
+          <span class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs" id="badge-discount-tag">
+            Tarifa Oficial
+          </span>
+        </div>
+
+        <!-- Center row: Big Price & Currency -->
+        <div class="flex items-baseline justify-start sm:justify-end gap-2 my-1.5">
+          <span class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight font-sans" id="final-price">1.400 €</span>
+          <span class="text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider" id="currency-label">EUR</span>
+        </div>
+
+        <!-- Bottom row: Payment Terms -->
+        <div class="pt-2.5 mt-1 border-t border-[#e5dfd3] flex items-center justify-start sm:justify-end gap-2 text-slate-500 text-xs">
+          <svg class="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" />
+          </svg>
+          <span class="text-[11px] font-medium leading-tight text-slate-600" id="payment-terms">O en cuotas mensuales accesibles con tarjeta de crédito</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Bullets (Dynamic Content) -->
+  <div class="mt-8">
+    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Servicios académicos incluidos:</h4>
+    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-700" id="features-list">
+      <!-- Injected via JavaScript -->
+    </ul>
+  </div>
+
+  <!-- Action Button and Urgency Footer -->
+  <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="text-center sm:text-left">
+      <p class="text-xs font-bold text-slate-800">Matrícula y Certificación oficial incluidas</p>
+      <p class="text-[11px] text-slate-500">Acceso inmediato tras confirmación del cupo</p>
+    </div>
+    <a class="w-full sm:w-auto px-8 py-4 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]" href="#contacto" id="main-cta-btn" onclick="handleMainCtaClick(event)">
+      Solicitar Beca
+    </a>
+  </div>
+</div>
+</div>
+
+</div>
+</section>
+<!-- END: Interactive Pricing Switch Section -->
+
+<!-- BEGIN: Specialized Bonuses (Faithful to IMAGE_1) -->
+<section class="py-16 md:py-24 border-b border-[#e2dacf]" data-purpose="bonus-modules" id="bonus">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Header -->
+<div class="text-center mb-12">
+<h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-wide font-display inline-flex items-center gap-2">
+  <span>MÓDULOS DE ESPECIALIZACIÓN INCLUIDOS</span>
+</h2>
+<p class="text-slate-600 mt-2 text-sm sm:text-base max-w-xl mx-auto">
+  Certificaciones complementarias de aplicación profesional incorporadas sin arancel adicional en tu matrícula.
+</p>
+</div>
+
+<!-- 3 Bonus Cards matching IMAGE_1 styling with Formal Vector Icons -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+<!-- Bonus 1: Travel -->
+<div class="bg-[#faf8f5] rounded-2xl border border-[#ded5c5] shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 flex items-center justify-center bg-[#fdfcfb]">
+  <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 shadow-sm">
+    <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+    </svg>
+  </div>
+</div>
+<div class="bonus-card-ribbon py-2.5 text-center text-white">
+  <span class="font-extrabold italic tracking-wider text-lg font-display">Travel</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+  <div>
+    <p class="text-sm font-bold text-slate-900 flex items-center gap-2">
+      <svg class="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Inglés para viajar con confianza</span>
+    </p>
+    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+      Desenvolvimiento seguro en aeropuertos internacionales, hoteles, aduanas y situaciones cotidianas sin bloqueos.
+    </p>
+  </div>
+  <span class="mt-5 text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-2.5 py-1 rounded inline-block w-fit border border-teal-200">
+    Beca 100% Bonificada
+  </span>
+</div>
+</div>
+
+<!-- Bonus 2: Business -->
+<div class="bg-[#faf8f5] rounded-2xl border border-[#ded5c5] shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 flex items-center justify-center bg-[#fdfcfb]">
+  <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 shadow-sm">
+    <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v1.069m7.5 0c1.338.056 2.656.175 3.938.354m-15.376 0c1.338-.056 2.656-.175 3.938-.354m0 0a24.536 24.536 0 016 0" />
+    </svg>
+  </div>
+</div>
+<div class="bonus-card-ribbon py-2.5 text-center text-white">
+  <span class="font-extrabold italic tracking-wider text-lg font-display">Business</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+  <div>
+    <p class="text-sm font-bold text-slate-900 flex items-center gap-2">
+      <svg class="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Inglés enfocado a negocios</span>
+    </p>
+    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+      Comunicación ejecutiva, redacción de informes, reuniones corporativas y negociación estratégica en inglés.
+    </p>
+  </div>
+  <span class="mt-5 text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-2.5 py-1 rounded inline-block w-fit border border-teal-200">
+    Beca 100% Bonificada
+  </span>
+</div>
+</div>
+
+<!-- Bonus 3: Interview -->
+<div class="bg-[#faf8f5] rounded-2xl border border-[#ded5c5] shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 flex items-center justify-center bg-[#fdfcfb]">
+  <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 shadow-sm">
+    <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+    </svg>
+  </div>
+</div>
+<div class="bonus-card-ribbon py-2.5 text-center text-white">
+  <span class="font-extrabold italic tracking-wider text-lg font-display">Interview</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+  <div>
+    <p class="text-sm font-bold text-slate-900 flex items-center gap-2">
+      <svg class="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Inglés para entrevistas laborales</span>
+    </p>
+    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+      Simulaciones de entrevistas con reclutadores internacionales, preguntas trampa y formulación de logros con autoridad.
+    </p>
+  </div>
+  <span class="mt-5 text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-2.5 py-1 rounded inline-block w-fit border border-teal-200">
+    Beca 100% Bonificada
+  </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Specialized Bonuses -->
+
+<!-- BEGIN: Quick Contact / Application Form Anchor -->
+<section class="py-14 bg-white border-t border-[#e2dacf]" data-purpose="registration-cta" id="contacto">
+<div class="max-w-3xl mx-auto px-4 text-center">
+<h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Consulta de Admisión Pedagógica</h3>
+<p class="text-slate-600 text-sm mt-2">Un orientador académico analizará tu nivel diagnóstico y confirmará la disponibilidad de beca arancelaria en tu región.</p>
+<form class="mt-6 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); alert('Solicitud registrada con éxito. Un orientador académico te contactará en breve.');">
+<input class="px-4 py-3 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none flex-1" placeholder="Nombre completo y país de residencia" required="" type="text">
+<button class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#00b4b6] hover:bg-[#0d9488] rounded-xl transition shadow-md whitespace-nowrap" type="submit">
+  Verificar Admisión
+</button>
+</form>
+</div>
+</section>
+<!-- END: Quick Contact / Application Form Anchor -->
+</main>
+
+<!-- BEGIN: Institutional Footer with Admin Configuration Sector -->
+<footer class="bg-[#111827] text-gray-400 text-xs py-12 border-t border-gray-800" data-purpose="main-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+  <!-- BEGIN: Price & Scholarship Configuration Panel -->
+  <div class="bg-[#1a2333] border border-gray-700/80 rounded-2xl p-6 sm:p-8 text-gray-200" id="config-precios">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-gray-700">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg border border-teal-500/30">
+          <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-base font-display">Panel de Control de Tarifas y Becas</h4>
+          <p class="text-gray-400 text-xs">Modificación en tiempo real de aranceles oficiales y con beca (guardado automático local).</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="resetBecaFlow()" class="text-xs text-teal-300 hover:text-teal-200 transition-colors border border-teal-800/80 bg-teal-950/40 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>Reiniciar Flujo de Beca</span>
+        </button>
+        <button onclick="resetDefaults()" class="text-xs text-rose-400 hover:text-rose-300 transition-colors border border-rose-900/60 bg-rose-950/30 px-3 py-1.5 rounded-lg">
+          Valores por Defecto
+        </button>
+      </div>
+    </div>
+
+    <!-- Inputs Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      
+      <!-- Columna 1: LATAM en EUROS (EUR €) -->
+      <div class="bg-[#111827] p-4 rounded-xl border border-gray-800">
+        <h5 class="text-teal-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+          </svg>
+          <span>Precios LATAM (EUR €)</span>
+        </h5>
+        
+        <div class="space-y-3 text-xs">
+          <div>
+            <span class="text-gray-400 font-semibold block mb-1">Modalidad Tradicional (2 sesiones 1a1/mes)</span>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-gray-500 uppercase block">Oficial (€)</label>
+                <input type="number" id="cfg-latam-trad-off" class="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-2.5 py-1.5 text-white font-bold text-xs focus:ring-1 focus:ring-teal-500" oninput="updateConfigFromInputs()">
+              </div>
+              <div>
+                <label class="text-[10px] text-teal-400 uppercase block">Con Beca (€)</label>
+                <input type="number" id="cfg-latam-trad-beca" class="w-full bg-[#1e293b] border border-teal-700/60 rounded-lg px-2.5 py-1.5 text-teal-300 font-bold text-xs focus:ring-1 focus:ring-teal-500" oninput="updateConfigFromInputs()">
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-gray-800">
+            <span class="text-gray-400 font-semibold block mb-1">Intensivo VIP (8 sesiones 1a1/mes)</span>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-gray-500 uppercase block">Oficial (€)</label>
+                <input type="number" id="cfg-latam-vip-off" class="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-2.5 py-1.5 text-white font-bold text-xs focus:ring-1 focus:ring-teal-500" oninput="updateConfigFromInputs()">
+              </div>
+              <div>
+                <label class="text-[10px] text-teal-400 uppercase block">Con Beca (€)</label>
+                <input type="number" id="cfg-latam-vip-beca" class="w-full bg-[#1e293b] border border-teal-700/60 rounded-lg px-2.5 py-1.5 text-teal-300 font-bold text-xs focus:ring-1 focus:ring-teal-500" oninput="updateConfigFromInputs()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: USA en DÓLARES (USD $) -->
+      <div class="bg-[#111827] p-4 rounded-xl border border-gray-800">
+        <h5 class="text-blue-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Precios USA / Global (USD $)</span>
+        </h5>
+        
+        <div class="space-y-3 text-xs">
+          <div>
+            <span class="text-gray-400 font-semibold block mb-1">Modalidad Tradicional (2 sesiones 1a1/mes)</span>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-gray-500 uppercase block">Oficial ($)</label>
+                <input type="number" id="cfg-usa-trad-off" class="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-2.5 py-1.5 text-white font-bold text-xs focus:ring-1 focus:ring-blue-500" oninput="updateConfigFromInputs()">
+              </div>
+              <div>
+                <label class="text-[10px] text-blue-400 uppercase block">Con Beca ($)</label>
+                <input type="number" id="cfg-usa-trad-beca" class="w-full bg-[#1e293b] border border-blue-700/60 rounded-lg px-2.5 py-1.5 text-blue-300 font-bold text-xs focus:ring-1 focus:ring-blue-500" oninput="updateConfigFromInputs()">
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-gray-800">
+            <span class="text-gray-400 font-semibold block mb-1">Intensivo VIP (8 sesiones 1a1/mes)</span>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-gray-500 uppercase block">Oficial ($)</label>
+                <input type="number" id="cfg-usa-vip-off" class="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-2.5 py-1.5 text-white font-bold text-xs focus:ring-1 focus:ring-blue-500" oninput="updateConfigFromInputs()">
+              </div>
+              <div>
+                <label class="text-[10px] text-blue-400 uppercase block">Con Beca ($)</label>
+                <input type="number" id="cfg-usa-vip-beca" class="w-full bg-[#1e293b] border border-blue-700/60 rounded-lg px-2.5 py-1.5 text-blue-300 font-bold text-xs focus:ring-1 focus:ring-blue-500" oninput="updateConfigFromInputs()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 3: Becas Disponibles -->
+      <div class="bg-[#111827] p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+        <div>
+          <h5 class="text-rose-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+            </svg>
+            <span>Cupos de Beca</span>
+          </h5>
+          
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="text-[10px] text-gray-400 uppercase block mb-1">Becas Disponibles (En Vivo)</label>
+              <input type="number" id="cfg-becas-disp" class="w-full bg-[#1e293b] border border-rose-700/60 rounded-lg px-2.5 py-1.5 text-rose-300 font-bold text-base focus:ring-1 focus:ring-rose-500" oninput="updateConfigFromInputs()">
+            </div>
+            <div>
+              <label class="text-[10px] text-gray-400 uppercase block mb-1">Total de Becas Asignadas</label>
+              <input type="number" id="cfg-becas-total" class="w-full bg-[#1e293b] border border-gray-700 rounded-lg px-2.5 py-1.5 text-white font-bold text-base focus:ring-1 focus:ring-gray-500" oninput="updateConfigFromInputs()">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-gray-800 text-[11px] text-gray-400">
+          Sincronización instantánea con los valores visualizados.
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END: Price Configuration Panel -->
+
+  <!-- Brand & Copy -->
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-4">
+    <div class="flex items-center space-x-3">
+      <img src="logo-dark-bg.png" alt="Conquer Languages" class="h-8 w-auto object-contain">
+      <div>
+        <p class="text-white font-bold text-sm">Conquer Languages © 2025</p>
+        <p class="text-gray-500 text-[11px]">Programa Máster de Inglés de Alto Rendimiento · 12 Meses</p>
+      </div>
+    </div>
+
+    <!-- Legal Links -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400">
+      <a class="hover:text-teal-400 transition" href="#">Términos Académicos</a>
+      <a class="hover:text-teal-400 transition" href="#">Políticas de Privacidad</a>
+      <a class="hover:text-teal-400 transition" href="#">Estatuto de Becas</a>
+      <a class="hover:text-teal-400 transition" href="#">Garantía Contractual</a>
+    </div>
+
+    <!-- Live badge -->
+    <div class="text-center md:text-right">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-[11px] border border-gray-700">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Asesoría Pedagógica 24/7
+      </span>
+    </div>
+  </div>
+
+</div>
+</footer>
+<!-- END: Institutional Footer -->
+
+<!-- BEGIN: Interactive Switch Logic Script -->
+<script data-purpose="pricing-toggle-logic">
+  // Default values with EUR for LATAM and USD for USA
+  const defaultPricingConfig = {
+    becasDisponibles: 7,
+    becasTotal: 50,
+    latam: {
+      currencySymbol: '€',
+      currencyCode: 'EUR',
+      traditional: { official: 1400, beca: 560 },
+      intensive: { official: 2200, beca: 990 }
+    },
+    usa: {
+      currencySymbol: '$',
+      currencyCode: 'USD',
+      traditional: { official: 2400, beca: 960 },
+      intensive: { official: 3500, beca: 1490 }
+    }
+  };
+
+  // State
+  let currentRegion = 'latam'; // 'latam' (EUR) | 'usa' (USD)
+  let currentModalidad = 'traditional'; // 'traditional' | 'intensive'
+  
+  // becaPhase:
+  // 'initial'  -> Becas are completely hidden! Button: "Solicitar Beca"
+  // 'loading'  -> Waiting / verification spinner + progress bar
+  // 'revealed' -> Becas "7 de 50" revealed! Button: "Aplicar Descuento de Beca"
+  // 'applied'  -> Discount is applied!
+  let becaPhase = 'initial'; 
+
+  let pricingConfig = JSON.parse(JSON.stringify(defaultPricingConfig));
+
+  // Load from localStorage if present
+  try {
+    const saved = localStorage.getItem('conquer_pricing_config_v2');
+    if (saved) {
+      pricingConfig = JSON.parse(saved);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  // Descriptions & Features (Traditional: 2 1-on-1 sessions/month; Intensive: 8 1-on-1 sessions/month)
+  const modalityDetails = {
+    traditional: {
+      title: "Modalidad Tradicional",
+      badge: "Enfoque Progresivo · 12 Meses",
+      desc: "Itinerario formativo continuo para profesionales y estudiantes que requieren flexibilidad horaria y consolidación progresiva.",
+      termsLatam: "O en cuotas mensuales accesibles con tarjeta de crédito",
+      termsUsa: "Or monthly installments with flexible credit/debit options",
+      features: [
+        "Acceso integral de 12 meses a plataforma y videoteca",
+        "Clases grupales en vivo ilimitadas (múltiples franjas horarias)",
+        "2 sesiones individuales 1 a 1 al mes para diagnóstico y práctica fonética",
+        "Itinerario modular completo de niveles A1 a C1 (Shadowing Method)",
+        "Mazo oficial de Flashcards con algoritmo de repetición espaciada",
+        "Módulos complementarios certificados (Travel, Business, Interview)",
+        "Garantía contractual de nivel certificada por escrito"
+      ]
+    },
+    intensive: {
+      title: "Modalidad Intensivo VIP",
+      badge: "Alto Rendimiento · Aceleración Ejecutiva",
+      desc: "Diseñado para profesionales con metas de promoción laboral inmediata, reubicación internacional o fluidez en tiempo récord.",
+      termsLatam: "Financiación arancelaria directa en cuotas protegidas",
+      termsUsa: "Direct executive installment plan available upon admission",
+      features: [
+        "8 sesiones individuales 1 a 1 al mes (2 por semana de alto impacto)",
+        "Plan acelerado de fluidez ejecutiva y dicción en 6 meses",
+        "Auditoría y corrección fonética personalizada en cada entrega",
+        "Simulaciones exhaustivas de entrevistas y presentaciones en inglés",
+        "Mentor pedagógico asignado con canal prioritario directo",
+        "Acceso vitalicio a las actualizaciones y expansiones del máster",
+        "Doble titulación certificada de competencia lingüística laboral"
+      ]
+    }
+  };
+
+  // Format currency display
+  function formatPrice(amount, region) {
+    if (region === 'latam') {
+      return `${amount.toLocaleString('es-ES')} €`;
+    } else {
+      return `$${amount.toLocaleString('en-US')}`;
+    }
+  }
+
+  // Region toggler (Called by the mundito icon at the top)
+  function toggleRegion() {
+    currentRegion = currentRegion === 'latam' ? 'usa' : 'latam';
+    renderPricing();
+
+    const priceBox = document.getElementById('price-box');
+    if (priceBox) {
+      priceBox.classList.remove('animate-price-change');
+      void priceBox.offsetWidth;
+      priceBox.classList.add('animate-price-change');
+    }
+  }
+
+  function setRegion(region) {
+    currentRegion = region;
+    renderPricing();
+  }
+
+  // Modalidad switcher
+  function setModalidad(mod) {
+    currentModalidad = mod;
+    const tabTraditional = document.getElementById('tab-traditional');
+    const tabIntensive = document.getElementById('tab-intensive');
+    const auraGlow = document.getElementById('card-aura-glow');
+
+    if (mod === 'traditional') {
+      tabTraditional.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm bg-white text-slate-900 border border-slate-200/80";
+      tabIntensive.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5";
+      if (auraGlow) {
+        auraGlow.classList.remove('opacity-45', 'scale-100');
+        auraGlow.classList.add('opacity-0', 'scale-95');
+      }
+    } else {
+      tabIntensive.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm bg-[#00b4b6] text-white flex items-center gap-1.5";
+      tabTraditional.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-slate-900";
+      if (auraGlow) {
+        auraGlow.classList.remove('opacity-0', 'scale-95');
+        auraGlow.classList.add('opacity-45', 'scale-100');
+      }
+    }
+
+    renderPricing();
+  }
+
+  // STEP 1 -> STEP 2: Start Verification / Loading Time
+  function startBecaVerification() {
+    becaPhase = 'loading';
+    renderBecaFlow();
+    renderPricing();
+
+    const textEl = document.getElementById('beca-loading-text');
+    const barEl = document.getElementById('beca-progress-bar');
+
+    setTimeout(() => {
+      if (becaPhase !== 'loading') return;
+      if (textEl) textEl.innerText = "Consultando cupos arancelarios disponibles para tu región...";
+      if (barEl) barEl.style.width = "50%";
+    }, 700);
+
+    setTimeout(() => {
+      if (becaPhase !== 'loading') return;
+      if (textEl) textEl.innerText = "Comprobando asignación de fondos de beca...";
+      if (barEl) barEl.style.width = "85%";
+    }, 1500);
+
+    setTimeout(() => {
+      if (becaPhase !== 'loading') return;
+      if (barEl) barEl.style.width = "100%";
+      setTimeout(() => {
+        becaPhase = 'revealed';
+        renderBecaFlow();
+        renderPricing();
+      }, 300);
+    }, 2200);
+  }
+
+  // STEP 3 -> STEP 4: User clicks "Aplicar Beca" -> Apply Discount!
+  function applyBecaDiscount() {
+    becaPhase = 'applied';
+    renderBecaFlow();
+    renderPricing();
+
+    const priceBox = document.getElementById('price-box');
+    if (priceBox) {
+      priceBox.classList.remove('animate-price-change');
+      void priceBox.offsetWidth;
+      priceBox.classList.add('animate-price-change');
+    }
+  }
+
+  // Reset Beca Flow to initial
+  function resetBecaFlow() {
+    becaPhase = 'initial';
+    renderBecaFlow();
+    renderPricing();
+  }
+
+  // Render the Beca Flow Banner (No emojis, sleek vector icons)
+  function renderBecaFlow() {
+    const container = document.getElementById('beca-flow-container');
+    if (!container) return;
+
+    if (becaPhase === 'initial') {
+      // Phase 1: INITIAL (Becas numbers are completely HIDDEN)
+      container.innerHTML = `
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#faf6ee] border border-[#e5ded0]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-700 flex items-center justify-center font-bold border border-teal-500/20 flex-shrink-0">
+              <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-5.25 6.557q0 .17.012.338" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider font-display">
+                Programa Institucional de Becas
+              </p>
+              <p class="text-[11px] text-slate-500">
+                Consulta la asignación de arancel bonificado disponible para tu perfil en esta convocatoria.
+              </p>
+            </div>
+          </div>
+          <button onclick="startBecaVerification()" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 bg-[#00b4b6] hover:bg-[#0d9488] text-white transform hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <span>Solicitar Beca</span>
+          </button>
+        </div>
+      `;
+    } else if (becaPhase === 'loading') {
+      // Phase 2: LOADING / WAITING STATE
+      container.innerHTML = `
+        <div class="bg-[#111827] text-white p-5 rounded-2xl border border-gray-700 shadow-inner">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2.5">
+              <svg class="animate-spin h-5 w-5 text-teal-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span class="text-xs sm:text-sm font-semibold text-gray-200" id="beca-loading-text">Conectando con el registro académico central...</span>
+            </div>
+            <span class="text-[10px] uppercase font-bold text-teal-400 tracking-wider">Verificando</span>
+          </div>
+          <div class="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+            <div id="beca-progress-bar" class="bg-gradient-to-r from-teal-500 to-emerald-400 h-2 rounded-full transition-all duration-300" style="width: 20%;"></div>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-2">Comprobando disponibilidad de arancel en tiempo real</p>
+        </div>
+      `;
+    } else if (becaPhase === 'revealed') {
+      // Phase 3: REVEALED (Becas 7 de 50 appear + button "Aplicar")
+      container.innerHTML = `
+        <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border-2 border-teal-500 p-4 sm:p-5 rounded-2xl shadow-sm animate-price-change flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="flex h-2.5 w-2.5 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+                </span>
+                <p class="text-xs sm:text-sm font-bold text-slate-900 font-display uppercase tracking-wide">
+                  Cupos de Beca Disponibles Confirmados
+                </p>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-teal-900 mt-0.5">
+                Becas disponibles: <span class="text-rose-600 text-sm sm:text-base font-extrabold">${pricingConfig.becasDisponibles}</span> de <span class="font-bold text-slate-800">${pricingConfig.becasTotal}</span> para tu convocatoria.
+              </p>
+            </div>
+          </div>
+          <button onclick="applyBecaDiscount()" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white transform hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Aplicar Descuento de Beca</span>
+          </button>
+        </div>
+      `;
+    } else if (becaPhase === 'applied') {
+      // Phase 4: APPLIED (Discount is active)
+      container.innerHTML = `
+        <div class="bg-emerald-50 border border-emerald-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-bold text-emerald-950 uppercase tracking-wide font-display">
+                Beca Arancelaria Aplicada con Éxito
+              </p>
+              <p class="text-[11px] sm:text-xs text-emerald-800 font-medium">
+                Cupo reservado formalmente · Becas restantes: <strong>${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal}</strong>
+              </p>
+            </div>
+          </div>
+          <button onclick="resetBecaFlow()" class="text-xs text-slate-500 hover:text-slate-800 underline font-medium whitespace-nowrap">
+            Remover asignación
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  // Handle click on the bottom main CTA button
+  function handleMainCtaClick(e) {
+    if (becaPhase === 'initial') {
+      e.preventDefault();
+      startBecaVerification();
+      document.getElementById('pricing-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (becaPhase === 'revealed') {
+      e.preventDefault();
+      applyBecaDiscount();
+      document.getElementById('price-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // Main Render function for Prices and Texts
+  function renderPricing() {
+    const details = modalityDetails[currentModalidad];
+    const prices = pricingConfig[currentRegion][currentModalidad];
+    const currency = pricingConfig[currentRegion].currencyCode;
+
+    // Card Badge (Modality)
+    document.getElementById('card-badge').innerText = details.badge;
+    if (currentModalidad === 'intensive') {
+      document.getElementById('card-badge').className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-teal-50 text-teal-800 border border-teal-300 tracking-wider";
+    } else {
+      document.getElementById('card-badge').className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider";
+    }
+
+    document.getElementById('plan-title').innerText = details.title;
+    document.getElementById('plan-desc').innerText = details.desc;
+    document.getElementById('payment-terms').innerText = currentRegion === 'latam' ? details.termsLatam : details.termsUsa;
+    document.getElementById('currency-label').innerText = currency;
+
+    // Price elements
+    const becaStateBadge = document.getElementById('beca-state-badge');
+    const discountBadge = document.getElementById('badge-discount-tag');
+    const regPriceContainer = document.getElementById('regular-price-container');
+    const finalPriceEl = document.getElementById('final-price');
+    const regularPriceEl = document.getElementById('regular-price');
+    const mainCta = document.getElementById('main-cta-btn');
+
+    if (becaPhase === 'applied') {
+      // DISCOUNT APPLIED!
+      becaStateBadge.innerText = `Beca Aprobada (${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal})`;
+      becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-teal-50 text-teal-800 border border-teal-300 tracking-wider transition-all";
+
+      regPriceContainer.style.display = 'block';
+      regularPriceEl.innerText = `${formatPrice(prices.official, currentRegion)} ${currency}`;
+      finalPriceEl.innerText = formatPrice(prices.beca, currentRegion);
+
+      discountBadge.innerText = "Beca Aplicada";
+      discountBadge.className = "px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-teal-100 text-teal-800 border border-teal-300 whitespace-nowrap shadow-xs";
+
+      mainCta.innerText = `Asegurar Cupo con Beca (${formatPrice(prices.beca, currentRegion)} ${currency})`;
+      mainCta.className = "w-full sm:w-auto px-8 py-4 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]";
+    } else {
+      // NOT APPLIED (Initial, Loading, or Revealed): SHOW OFFICIAL ARANCEL
+      regPriceContainer.style.display = 'none';
+      finalPriceEl.innerText = formatPrice(prices.official, currentRegion);
+
+      discountBadge.innerText = "Tarifa Oficial";
+      discountBadge.className = "px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs";
+
+      if (becaPhase === 'initial') {
+        becaStateBadge.innerText = "Tarifa Oficial";
+        becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider transition-all";
+
+        mainCta.innerText = "Solicitar Beca";
+        mainCta.className = "w-full sm:w-auto px-8 py-4 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]";
+      } else if (becaPhase === 'loading') {
+        becaStateBadge.innerText = "Verificando Cupos...";
+        becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-amber-50 text-amber-800 border border-amber-300 tracking-wider transition-all";
+
+        mainCta.innerText = "Verificando disponibilidad...";
+        mainCta.className = "w-full sm:w-auto px-8 py-4 bg-slate-400 text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow cursor-not-allowed";
+      } else if (becaPhase === 'revealed') {
+        becaStateBadge.innerText = `${pricingConfig.becasDisponibles} Becas Disponibles`;
+        becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-rose-50 text-rose-800 border border-rose-300 tracking-wider transition-all";
+
+        mainCta.innerText = "Aplicar Descuento de Beca";
+        mainCta.className = "w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]";
+      }
+    }
+
+    // Features list
+    const listEl = document.getElementById('features-list');
+    listEl.innerHTML = '';
+    details.features.forEach(feat => {
+      const li = document.createElement('li');
+      li.className = "flex items-start gap-2.5";
+      li.innerHTML = `
+        <svg class="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>${feat}</span>
+      `;
+      listEl.appendChild(li);
+    });
+  }
+
+  // Populate config input fields from state
+  function populateConfigInputs() {
+    document.getElementById('cfg-latam-trad-off').value = pricingConfig.latam.traditional.official;
+    document.getElementById('cfg-latam-trad-beca').value = pricingConfig.latam.traditional.beca;
+    document.getElementById('cfg-latam-vip-off').value = pricingConfig.latam.intensive.official;
+    document.getElementById('cfg-latam-vip-beca').value = pricingConfig.latam.intensive.beca;
+
+    document.getElementById('cfg-usa-trad-off').value = pricingConfig.usa.traditional.official;
+    document.getElementById('cfg-usa-trad-beca').value = pricingConfig.usa.traditional.beca;
+    document.getElementById('cfg-usa-vip-off').value = pricingConfig.usa.intensive.official;
+    document.getElementById('cfg-usa-vip-beca').value = pricingConfig.usa.intensive.beca;
+
+    document.getElementById('cfg-becas-disp').value = pricingConfig.becasDisponibles;
+    document.getElementById('cfg-becas-total').value = pricingConfig.becasTotal;
+  }
+
+  // Handle inputs in Admin panel
+  function updateConfigFromInputs() {
+    pricingConfig.latam.traditional.official = Number(document.getElementById('cfg-latam-trad-off').value) || 0;
+    pricingConfig.latam.traditional.beca = Number(document.getElementById('cfg-latam-trad-beca').value) || 0;
+    pricingConfig.latam.intensive.official = Number(document.getElementById('cfg-latam-vip-off').value) || 0;
+    pricingConfig.latam.intensive.beca = Number(document.getElementById('cfg-latam-vip-beca').value) || 0;
+
+    pricingConfig.usa.traditional.official = Number(document.getElementById('cfg-usa-trad-off').value) || 0;
+    pricingConfig.usa.traditional.beca = Number(document.getElementById('cfg-usa-trad-beca').value) || 0;
+    pricingConfig.usa.intensive.official = Number(document.getElementById('cfg-usa-vip-off').value) || 0;
+    pricingConfig.usa.intensive.beca = Number(document.getElementById('cfg-usa-vip-beca').value) || 0;
+
+    pricingConfig.becasDisponibles = Number(document.getElementById('cfg-becas-disp').value) || 0;
+    pricingConfig.becasTotal = Number(document.getElementById('cfg-becas-total').value) || 0;
+
+    try {
+      localStorage.setItem('conquer_pricing_config_v2', JSON.stringify(pricingConfig));
+    } catch (e) {
+      console.error(e);
+    }
+
+    renderBecaFlow();
+    renderPricing();
+  }
+
+  // Reset to original defaults
+  function resetDefaults() {
+    if (confirm('¿Deseas restablecer las tarifas a los valores por defecto?')) {
+      pricingConfig = JSON.parse(JSON.stringify(defaultPricingConfig));
+      try {
+        localStorage.removeItem('conquer_pricing_config_v2');
+      } catch (e) {}
+      populateConfigInputs();
+      resetBecaFlow();
+    }
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    populateConfigInputs();
+    renderBecaFlow();
+    renderPricing();
+  });
+</script>
+<!-- END: Interactive Switch Logic Script -->
+</body></html>
