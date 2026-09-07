@@ -177,15 +177,15 @@
     <!-- Dynamic Price Block -->
     <div class="lg:col-span-5">
       <div class="bg-gradient-to-br from-[#faf8f5] to-[#f4eee2] p-4 sm:p-5 rounded-xl border border-[#e5dfd3] shadow-sm flex flex-col justify-between" id="price-box">
-        <!-- Top row: Status Badge & Strikethrough -->
-        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 mb-1.5">
+        <!-- Top row: Status Badge & Strikethrough (only shown when scholarship applied) -->
+        <div id="price-top-row" class="items-center justify-between sm:justify-end gap-2 mb-1.5" style="display: none;">
           <div id="regular-price-container" style="display: none;">
             <span class="text-xs text-slate-400 line-through font-semibold uppercase tracking-wider block">
               Arancel: <span id="regular-price">1.400 € EUR</span>
             </span>
           </div>
-          <span class="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs" id="badge-discount-tag">
-            Tarifa Oficial
+          <span class="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-teal-100 text-teal-800 border border-teal-300 whitespace-nowrap shadow-xs" id="badge-discount-tag" style="display: none;">
+            Beca Aplicada
           </span>
         </div>
 
@@ -862,6 +862,7 @@
     document.getElementById('currency-label').innerText = currency;
 
     // Price elements
+    const priceTopRow = document.getElementById('price-top-row');
     const becaStateBadge = document.getElementById('beca-state-badge');
     const discountBadge = document.getElementById('badge-discount-tag');
     const regPriceContainer = document.getElementById('regular-price-container');
@@ -871,6 +872,7 @@
 
     if (becaPhase === 'applied') {
       // DISCOUNT APPLIED!
+      if (priceTopRow) priceTopRow.style.display = 'flex';
       becaStateBadge.innerText = `Beca Aprobada (${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal})`;
       becaStateBadge.className = "px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-teal-50 text-teal-800 border border-teal-300 tracking-wider transition-all";
 
@@ -878,18 +880,18 @@
       regularPriceEl.innerText = `${formatPrice(prices.official, currentRegion)} ${currency}`;
       finalPriceEl.innerText = formatPrice(prices.beca, currentRegion);
 
+      discountBadge.style.display = 'inline-block';
       discountBadge.innerText = "Beca Aplicada";
-      discountBadge.className = "px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-teal-100 text-teal-800 border border-teal-300 whitespace-nowrap shadow-xs";
+      discountBadge.className = "px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-teal-100 text-teal-800 border border-teal-300 whitespace-nowrap shadow-xs";
 
       mainCta.innerText = `Asegurar Cupo con Beca (${formatPrice(prices.beca, currentRegion)} ${currency})`;
       mainCta.className = "w-full sm:w-auto px-8 py-4 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]";
     } else {
       // NOT APPLIED (Initial, Loading, or Revealed): SHOW OFFICIAL ARANCEL
+      if (priceTopRow) priceTopRow.style.display = 'none';
       regPriceContainer.style.display = 'none';
+      discountBadge.style.display = 'none';
       finalPriceEl.innerText = formatPrice(prices.official, currentRegion);
-
-      discountBadge.innerText = "Tarifa Oficial";
-      discountBadge.className = "px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs";
 
       if (becaPhase === 'initial') {
         becaStateBadge.innerText = "Tarifa Oficial";
