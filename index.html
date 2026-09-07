@@ -92,7 +92,7 @@
 
 <!-- BEGIN: Top Navigation Bar -->
 <header class="sticky top-0 z-50 bg-[#111827] text-white shadow-md border-b border-gray-800" data-purpose="main-header">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
 <!-- Logo area -->
 <div class="flex items-center space-x-3">
   <a href="#" class="flex items-center gap-2">
@@ -124,23 +124,23 @@
 
 <main>
 <!-- BEGIN: Interactive Pricing Switch Section -->
-<section class="py-12 md:py-16 border-b border-[#e2dacf]" data-purpose="interactive-pricing" id="precios">
+<section class="py-5 sm:py-7 border-b border-[#e2dacf]" data-purpose="interactive-pricing" id="precios">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<div class="text-center mb-8">
-  <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-display">
+<div class="text-center mb-4">
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
     Planes Académicos de Aceleración
   </h2>
-  <p class="text-slate-600 mt-2 text-sm sm:text-base max-w-xl mx-auto">
+  <p class="text-slate-600 mt-1 text-xs sm:text-sm max-w-xl mx-auto">
     Selecciona entre nuestro programa estructurado a 12 meses o el itinerario intensivo de alta dedicación.
   </p>
 
   <!-- Modalidad Switch (Traditional vs Intensive) -->
-  <div class="mt-6 inline-flex p-1.5 bg-[#e3dacf] rounded-2xl shadow-inner border border-[#cfc4b0]" role="tablist">
-    <button class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm bg-white text-slate-900 border border-slate-200/80" id="tab-traditional" onclick="setModalidad('traditional')">
+  <div class="mt-2.5 inline-flex p-1 bg-[#e3dacf] rounded-xl shadow-inner border border-[#cfc4b0]" role="tablist">
+    <button class="px-4 py-1.5 rounded-lg font-bold text-xs transition-all shadow-sm bg-white text-slate-900 border border-slate-200/80" id="tab-traditional" onclick="setModalidad('traditional')">
       Modalidad Tradicional
     </button>
-    <button class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5" id="tab-intensive" onclick="setModalidad('intensive')">
+    <button class="px-4 py-1.5 rounded-lg font-bold text-xs transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5" id="tab-intensive" onclick="setModalidad('intensive')">
       <svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
       </svg>
@@ -154,50 +154,50 @@
   <!-- Backlight Aura Glow behind the card (peeks from the edges without changing the border) -->
   <div id="card-aura-glow" class="absolute -inset-2.5 sm:-inset-4 rounded-[2.5rem] bg-gradient-to-r from-[#00b4b6] via-[#38bdf8] to-[#00b4b6] opacity-0 blur-2xl transition-all duration-500 pointer-events-none -z-10"></div>
 
-  <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-slate-300 shadow-xl relative transition-all duration-300" id="pricing-card">
+  <div class="bg-white rounded-2xl p-5 sm:p-7 border-2 border-slate-300 shadow-xl relative transition-all duration-300" id="pricing-card">
 
   <!-- Interactive Beca Flow Container (Initial -> Loading / Waiting -> Revealed -> Applied) -->
-  <div id="beca-flow-container" class="mb-6">
+  <div id="beca-flow-container" class="mb-3.5">
     <!-- Injected dynamically by renderBecaFlow() -->
   </div>
 
   <!-- Top Tag / Badge Container -->
-  <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
-    <span class="px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider" id="card-badge">Enfoque Progresivo · 12 Meses</span>
-    <span class="px-3.5 py-1 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider transition-all" id="beca-state-badge">Tarifa Oficial</span>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
+    <span class="px-3 py-0.5 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider" id="card-badge">Enfoque Progresivo · 12 Meses</span>
+    <span class="px-3 py-0.5 text-xs font-bold uppercase rounded-full bg-slate-100 text-slate-700 border border-slate-300 tracking-wider transition-all" id="beca-state-badge">Tarifa Oficial</span>
   </div>
 
   <!-- Title and Description with Redesigned Price Box -->
-  <div class="grid lg:grid-cols-12 gap-8 items-center pb-8 border-b border-slate-100">
+  <div class="grid lg:grid-cols-12 gap-6 items-center pb-4 border-b border-slate-100">
     <div class="lg:col-span-7">
-      <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display" id="plan-title">Modalidad Tradicional</h3>
-      <p class="text-slate-600 text-sm mt-2 leading-relaxed" id="plan-desc">Itinerario formativo continuo para profesionales y estudiantes que requieren flexibilidad horaria y consolidación progresiva.</p>
+      <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-display" id="plan-title">Modalidad Tradicional</h3>
+      <p class="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed" id="plan-desc">Itinerario formativo continuo para profesionales y estudiantes que requieren flexibilidad horaria y consolidación progresiva.</p>
     </div>
 
     <!-- Dynamic Price Block -->
     <div class="lg:col-span-5">
-      <div class="bg-gradient-to-br from-[#faf8f5] to-[#f4eee2] p-5 sm:p-6 rounded-2xl border border-[#e5dfd3] shadow-sm flex flex-col justify-between" id="price-box">
+      <div class="bg-gradient-to-br from-[#faf8f5] to-[#f4eee2] p-4 sm:p-5 rounded-xl border border-[#e5dfd3] shadow-sm flex flex-col justify-between" id="price-box">
         <!-- Top row: Status Badge & Strikethrough -->
-        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 mb-2">
+        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 mb-1.5">
           <div id="regular-price-container" style="display: none;">
             <span class="text-xs text-slate-400 line-through font-semibold uppercase tracking-wider block">
               Arancel: <span id="regular-price">1.400 € EUR</span>
             </span>
           </div>
-          <span class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs" id="badge-discount-tag">
+          <span class="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-200/90 text-slate-700 border border-slate-300/80 whitespace-nowrap shadow-xs" id="badge-discount-tag">
             Tarifa Oficial
           </span>
         </div>
 
         <!-- Center row: Big Price & Currency -->
-        <div class="flex items-baseline justify-start sm:justify-end gap-2 my-1.5">
-          <span class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight font-sans" id="final-price">1.400 €</span>
+        <div class="flex items-baseline justify-start sm:justify-end gap-1.5 my-1">
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-sans" id="final-price">1.400 €</span>
           <span class="text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider" id="currency-label">EUR</span>
         </div>
 
         <!-- Bottom row: Payment Terms -->
-        <div class="pt-2.5 mt-1 border-t border-[#e5dfd3] flex items-center justify-start sm:justify-end gap-2 text-slate-500 text-xs">
-          <svg class="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+        <div class="pt-2 mt-1 border-t border-[#e5dfd3] flex items-center justify-start sm:justify-end gap-1.5 text-slate-500 text-xs">
+          <svg class="w-3.5 h-3.5 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" />
           </svg>
           <span class="text-[11px] font-medium leading-tight text-slate-600" id="payment-terms">O en cuotas mensuales accesibles con tarjeta de crédito</span>
@@ -207,20 +207,20 @@
   </div>
 
   <!-- Feature Bullets (Dynamic Content) -->
-  <div class="mt-8">
-    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Servicios académicos incluidos:</h4>
-    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-700" id="features-list">
+  <div class="mt-4">
+    <h4 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Servicios académicos incluidos:</h4>
+    <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-slate-700" id="features-list">
       <!-- Injected via JavaScript -->
     </ul>
   </div>
 
   <!-- Action Button and Urgency Footer -->
-  <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div class="text-center sm:text-left">
       <p class="text-xs font-bold text-slate-800">Matrícula y Certificación oficial incluidas</p>
       <p class="text-[11px] text-slate-500">Acceso inmediato tras confirmación del cupo</p>
     </div>
-    <a class="w-full sm:w-auto px-8 py-4 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all transform hover:scale-[1.02]" href="#contacto" id="main-cta-btn" onclick="handleMainCtaClick(event)">
+    <a class="w-full sm:w-auto px-6 py-2.5 sm:py-3 bg-[#00b4b6] hover:bg-[#0d9488] text-white font-bold text-center text-xs md:text-sm uppercase tracking-wider rounded-xl shadow-md transition-all transform hover:scale-[1.02]" href="#contacto" id="main-cta-btn" onclick="handleMainCtaClick(event)">
       Solicitar Beca
     </a>
   </div>
@@ -725,15 +725,15 @@
     if (becaPhase === 'initial') {
       // Phase 1: INITIAL (Becas numbers are completely HIDDEN)
       container.innerHTML = `
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#faf6ee] border border-[#e5ded0]">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-700 flex items-center justify-center font-bold border border-teal-500/20 flex-shrink-0">
-              <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl bg-[#faf6ee] border border-[#e5ded0]">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-teal-500/10 text-teal-700 flex items-center justify-center font-bold border border-teal-500/20 flex-shrink-0">
+              <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-5.25 6.557q0 .17.012.338" />
               </svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider font-display">
+              <p class="text-xs font-bold text-slate-900 uppercase tracking-wider font-display">
                 Programa Institucional de Becas
               </p>
               <p class="text-[11px] text-slate-500">
@@ -741,8 +741,8 @@
               </p>
             </div>
           </div>
-          <button onclick="startBecaVerification()" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 bg-[#00b4b6] hover:bg-[#0d9488] text-white transform hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <button onclick="startBecaVerification()" class="w-full sm:w-auto px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center gap-1.5 bg-[#00b4b6] hover:bg-[#0d9488] text-white transform hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
             <span>Solicitar Beca</span>
@@ -752,50 +752,50 @@
     } else if (becaPhase === 'loading') {
       // Phase 2: LOADING / WAITING STATE
       container.innerHTML = `
-        <div class="bg-[#111827] text-white p-5 rounded-2xl border border-gray-700 shadow-inner">
-          <div class="flex items-center justify-between gap-3 mb-3">
-            <div class="flex items-center gap-2.5">
-              <svg class="animate-spin h-5 w-5 text-teal-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <div class="bg-[#111827] text-white p-3 sm:p-3.5 rounded-xl border border-gray-700 shadow-inner">
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <div class="flex items-center gap-2">
+              <svg class="animate-spin h-4 w-4 text-teal-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              <span class="text-xs sm:text-sm font-semibold text-gray-200" id="beca-loading-text">Conectando con el registro académico central...</span>
+              <span class="text-xs font-semibold text-gray-200" id="beca-loading-text">Conectando con el registro académico central...</span>
             </div>
-            <span class="text-[10px] uppercase font-bold text-teal-400 tracking-wider">Verificando</span>
+            <span class="text-[9px] uppercase font-bold text-teal-400 tracking-wider">Verificando</span>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
-            <div id="beca-progress-bar" class="bg-gradient-to-r from-teal-500 to-emerald-400 h-2 rounded-full transition-all duration-300" style="width: 20%;"></div>
+          <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
+            <div id="beca-progress-bar" class="bg-gradient-to-r from-teal-500 to-emerald-400 h-1.5 rounded-full transition-all duration-300" style="width: 20%;"></div>
           </div>
-          <p class="text-[10px] text-gray-400 mt-2">Comprobando disponibilidad de arancel en tiempo real</p>
+          <p class="text-[9px] text-gray-400 mt-1.5">Comprobando disponibilidad de arancel en tiempo real</p>
         </div>
       `;
     } else if (becaPhase === 'revealed') {
       // Phase 3: REVEALED (Becas 7 de 50 appear + button "Aplicar")
       container.innerHTML = `
-        <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border-2 border-teal-500 p-4 sm:p-5 rounded-2xl shadow-sm animate-price-change flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-500 p-3 sm:p-3.5 rounded-xl shadow-sm animate-price-change flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <div class="flex items-center gap-2">
-                <span class="flex h-2.5 w-2.5 relative">
+              <div class="flex items-center gap-1.5">
+                <span class="flex h-2 w-2 relative">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
                 </span>
-                <p class="text-xs sm:text-sm font-bold text-slate-900 font-display uppercase tracking-wide">
+                <p class="text-xs font-bold text-slate-900 font-display uppercase tracking-wide">
                   Cupos de Beca Disponibles Confirmados
                 </p>
               </div>
-              <p class="text-xs sm:text-sm font-semibold text-teal-900 mt-0.5">
-                Becas disponibles: <span class="text-rose-600 text-sm sm:text-base font-extrabold">${pricingConfig.becasDisponibles}</span> de <span class="font-bold text-slate-800">${pricingConfig.becasTotal}</span> para tu convocatoria.
+              <p class="text-xs font-semibold text-teal-900 mt-0.5">
+                Becas disponibles: <span class="text-rose-600 text-sm font-extrabold">${pricingConfig.becasDisponibles}</span> de <span class="font-bold text-slate-800">${pricingConfig.becasTotal}</span> para tu convocatoria.
               </p>
             </div>
           </div>
-          <button onclick="applyBecaDiscount()" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white transform hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <button onclick="applyBecaDiscount()" class="w-full sm:w-auto px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white transform hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
             <span>Aplicar Descuento de Beca</span>
@@ -805,23 +805,23 @@
     } else if (becaPhase === 'applied') {
       // Phase 4: APPLIED (Discount is active)
       container.innerHTML = `
-        <div class="bg-emerald-50 border border-emerald-300 p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <div class="bg-emerald-50 border border-emerald-300 p-3 sm:p-3.5 rounded-xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-bold text-emerald-950 uppercase tracking-wide font-display">
+              <p class="text-xs font-bold text-emerald-950 uppercase tracking-wide font-display">
                 Beca Arancelaria Aplicada con Éxito
               </p>
-              <p class="text-[11px] sm:text-xs text-emerald-800 font-medium">
+              <p class="text-[11px] text-emerald-800 font-medium">
                 Cupo reservado formalmente · Becas restantes: <strong>${pricingConfig.becasDisponibles} de ${pricingConfig.becasTotal}</strong>
               </p>
             </div>
           </div>
-          <button onclick="resetBecaFlow()" class="text-xs text-slate-500 hover:text-slate-800 underline font-medium whitespace-nowrap">
+          <button onclick="resetBecaFlow()" class="text-[11px] text-slate-500 hover:text-slate-800 underline font-medium whitespace-nowrap">
             Remover asignación
           </button>
         </div>
